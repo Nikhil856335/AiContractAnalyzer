@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contract Risk Analyzer</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Live Score Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<h1>🏏 Live Sports Score Tracker</h1>
+
 <div class="container">
-    <h1>AI Contract Analyzer</h1>
 
-    <textarea id="contractText" placeholder="Paste contract here..."></textarea>
-    
-    <button onclick="analyze()">Analyze</button>
+  <div class="score-box">
+    <h2 id="teamA">Team A</h2>
+    <h3 id="scoreA">0</h3>
+    <button onclick="addScore('A')">+1 Run</button>
+  </div>
 
-    <div id="result"></div>
+  <div class="score-box">
+    <h2 id="teamB">Team B</h2>
+    <h3 id="scoreB">0</h3>
+    <button onclick="addScore('B')">+1 Run</button>
+  </div>
+
 </div>
+
+<div class="controls">
+  <button onclick="resetMatch()">Reset Match</button>
+</div>
+
+<h2 id="status">Match Status: LIVE 🔴</h2>
 
 <script src="script.js"></script>
 </body>
