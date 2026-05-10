@@ -1,24 +1,22 @@
-async function analyze() {
-    let text = document.getElementById("contractText").value;
+let scoreA = 0;
+let scoreB = 0;
 
-    let response = await fetch("http://localhost:8080/analyze", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ text: text })
-    });
+function addScore(team) {
+  if (team === 'A') {
+    scoreA++;
+    document.getElementById("scoreA").innerText = scoreA;
+  } else {
+    scoreB++;
+    document.getElementById("scoreB").innerText = scoreB;
+  }
+}
 
-    let data = await response.json();
+function resetMatch() {
+  scoreA = 0;
+  scoreB = 0;
 
-    let resultDiv = document.getElementById("result");
+  document.getElementById("scoreA").innerText = scoreA;
+  document.getElementById("scoreB").innerText = scoreB;
 
-    let html = `<h2>Risk Score: ${data.score}%</h2>`;
-
-    data.risks.forEach(risk => {
-        let cls = risk.type.toLowerCase();
-        html += `<p class="${cls}">${risk.type} Risk: ${risk.text}</p>`;
-    });
-
-    resultDiv.innerHTML = html;
+  document.getElementById("status").innerText = "Match Status: RESET 🔄";
 }
